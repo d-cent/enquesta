@@ -1,4 +1,6 @@
 class Poll < ActiveRecord::Base
+  # relationships
+  has_many :options
   
   # validations
   validates :prompt, presence: true

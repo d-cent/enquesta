@@ -1,1 +1,12 @@
-= @poll.prompt
+%p= @poll.prompt
+
+%ul
+  - @poll.options.each do |option|
+    %li= option.text
+
+  %li
+    = form_for [@poll, @poll.options.build] do |f|
+      = f.label :text
+      = f.text_area :text
+      
+      = f.submit

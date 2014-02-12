@@ -26,9 +26,9 @@ end
 
 group :test do
   gem 'database_cleaner', '~> 0.7.1'
-  gem 'simplecov', :require => false, :group => :test
   gem 'capybara'
   gem 'factory_girl_rails'
+  gem 'simplecov', require: false
 end
 
 group :production do
