@@ -9,4 +9,9 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Enquesta::Application.config.secret_key_base = 'f71ce957d6fc965ec48e2c680e3aff3990432c954e46e82a734efa6082540a14ed0a36b6565010c36ddc6c74006a642e1c12533d2d252d5e90181929002b48d5'
+
+Enquesta::Application.config.secret_key_base = if Rails.env.development? or Rails.env.test?
+  (1..19).to_a.join
+else
+  ENV['SECRET_KEY_BASE']
+end
