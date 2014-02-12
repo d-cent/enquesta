@@ -21,6 +21,7 @@ end
 group :development, :test do
   gem 'rspec-rails'
   gem 'foreman'
+  gem 'rake'
 end
 
 group :test do

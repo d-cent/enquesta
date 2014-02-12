@@ -185,6 +185,7 @@ DEPENDENCIES
   rails3_serve_static_assets!
   rails_12factor
   rails_log_stdout!
+  rake
   redcarpet
   rspec-rails
   sass-rails (~> 4.0.0)
