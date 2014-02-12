@@ -1,4 +1,8 @@
 class Poll < ActiveRecord::Base
+  
+  # validations
+  validates :prompt, presence: true
+  
   # callbacks
   after_create :generate_hashed_id
 

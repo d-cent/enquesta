@@ -2,6 +2,8 @@
 
 _for just-in-time distributed decision making._
 
+[![Build Status](https://travis-ci.org/d-cent/enquesta.png)](https://travis-ci.org/d-cent/enquesta)
+
 ## Get Started
 
 ```bash
