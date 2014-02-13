@@ -1,12 +1,20 @@
 %p= @poll.prompt
 
-%ul
-  - @poll.options.each do |option|
-    %li= option.text
+:coffeescript
+  $(document).on 'ready page:load', ->
+    $("[data-action='selector'] li").bind 'click', (e) ->
+      $("[name='vote[option_id]']").val $(e.currentTarget).data('option')
+      $(e.currentTarget).closest('form').submit()
 
-  %li
-    = form_for [@poll, @poll.options.build] do |f|
-      = f.label :text
-      = f.text_area :text
-      
-      = f.submit
+= form_for [@poll, Vote.new] do |f|
+  = f.hidden_field :option_id
+  
+  %ul{'data-action' => 'selector'}
+    - @poll.options.each do |option|
+      %li{'data-option' => option.id} #{ option.text } (#{ option.votes.size })
+
+= form_for [@poll, @poll.options.build] do |f|
+  = f.label :text
+  = f.text_area :text
+  
+  = f.submit
