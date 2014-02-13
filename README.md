@@ -14,9 +14,12 @@ bundle exec rake db:schema:load
 foreman start
 ```
 
+(and visit [localhost:5000](http://localhost:5000))
+
 ## Test
 
+I'm using [rspec](http://rspec.info/) to test the models and controllers. Contributors are asked to do the same.
+
 ```bash
-bundle exec rake db:test:clone
-bundle exec rspec
+bundle exec rake
 ```
