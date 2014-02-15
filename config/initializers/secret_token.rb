@@ -10,8 +10,4 @@
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
 
-Enquesta::Application.config.secret_key_base = if Rails.env.development? or Rails.env.test?
-  (1..19).to_a.join
-else
-  ENV['SECRET_KEY_BASE']
-end
+Enquesta::Application.config.secret_key_base = (Rails.env.development? or Rails.env.test?) ? (1..19).to_a.join : ENV['SECRET_KEY_BASE']

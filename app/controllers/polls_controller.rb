@@ -4,7 +4,7 @@ class PollsController < ApplicationController
   end
   
   def new
-    @poll = Poll.new
+    @poll = Poll.new(ends_at: Time.zone.now + 1.hours)
   end
   
   def create
@@ -19,6 +19,6 @@ class PollsController < ApplicationController
 private
 
   def poll_params
-    params.require(:poll).permit(:prompt)
+    params.require(:poll).permit(:prompt, :ends_at)
   end
 end

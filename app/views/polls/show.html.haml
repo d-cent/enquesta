@@ -1,20 +1,32 @@
 %p= @poll.prompt
 
-:coffeescript
-  $(document).on 'ready page:load', ->
-    $("[data-action='selector'] li").bind 'click', (e) ->
-      $("[name='vote[option_id]']").val $(e.currentTarget).data('option')
-      $(e.currentTarget).closest('form').submit()
+- if @poll.is_over?
 
-= form_for [@poll, Vote.new] do |f|
-  = f.hidden_field :option_id
-  
-  %ul{'data-action' => 'selector'}
+  %em closed at #{ @poll.ends_at }
+
+  %ul
     - @poll.options.each do |option|
-      %li{'data-option' => option.id} #{ option.text } (#{ option.votes.size })
+      %li #{ option.text } (#{ option.votes.size })
 
-= form_for [@poll, @poll.options.build] do |f|
-  = f.label :text
-  = f.text_area :text
+- else
+
+  %em poll closes at #{ @poll.ends_at }
+
+  :coffeescript
+    $(document).on 'ready page:load', ->
+      $("[data-action='selector'] li").bind 'click', (e) ->
+        $("[name='vote[option_id]']").val $(e.currentTarget).data('option')
+        $(e.currentTarget).closest('form').submit()
+
+  = form_for [@poll, Vote.new] do |f|
+    = f.hidden_field :option_id
   
-  = f.submit
+    %ul{'data-action' => 'selector'}
+      - @poll.options.each do |option|
+        %li{'data-option' => option.id} #{ option.text } (#{ option.votes.size })
+
+  = form_for [@poll, @poll.options.build] do |f|
+    = f.label :text, 'Option'
+    = f.text_area :text
+  
+    = f.submit

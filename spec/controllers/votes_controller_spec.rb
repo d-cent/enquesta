@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe VotesController do
   describe "POST create" do
-    poll = Poll.create(prompt: 'Where should we meet?')
+    poll = Poll.create(prompt: 'Where should we meet?', ends_at: (Time.zone.now + 2.hours))
     poll.options << Option.create(text: 'The Park')
     poll.options << Option.create(text: 'The Pub')
     

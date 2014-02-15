@@ -16,6 +16,10 @@ class Poll < ActiveRecord::Base
   def self.find_securely(supposed_hash)
     where(hashed_id: supposed_hash).first if supposed_hash.present?
   end
+  
+  def is_over?
+    self.ends_at.present? && (Time.zone.now > self.ends_at)
+  end
 
 private
   
