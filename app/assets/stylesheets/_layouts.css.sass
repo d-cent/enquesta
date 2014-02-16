@@ -111,10 +111,20 @@
           padding: em(.5) 0 0 em(.5)
           font-size: em(.7)
           line-height: em(.7 * 1.4)
+          font-weight: 300
+          strong
+            font-weight: 600
+            &:after
+              content: ' •'
+              font-weight: 300
         
         & > label
           position: absolute
-          color: $subtle-ink
+          color: lighten($subtle-ink,10%)
+          strong
+            color: $subtle-ink
+            &:after
+              color: lighten($subtle-ink,10%)
         
         & > div
           position: absolute
@@ -127,7 +137,11 @@
           & > label
             width: em(50)
             display: block
-            color: $white
+            color: rgba(255,255,255,.5)
+            strong
+              color: $white
+              &:after
+                color: rgba(255,255,255,.5)
   
   // selector
   form

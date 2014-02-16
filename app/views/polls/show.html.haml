@@ -9,11 +9,10 @@
       %ul.results
         - @poll.options.each do |option|
           %li{class: ( (@poll.winning_option == option) ? 'winner' : nil )}
-            %label #{ option.text }
             %div.graph
-              %label #{ pluralize(option.votes.size, 'vote') }
+              %label <strong>#{ option.text }</strong> #{ pluralize(option.votes.size, 'vote') }
               %div{style: "width: #{ (option.votes.size * 100) / (@poll.votes.size) }%;"}
-                %label #{ pluralize(option.votes.size, 'vote') }
+                %label <strong>#{ option.text }</strong> #{ pluralize(option.votes.size, 'vote') }
     
     - else
       
@@ -33,7 +32,7 @@
       = f.hidden_field :option_id
   
       %ul{'data-action' => 'selector'}
-        - @poll.options.each do |option|
+        - @poll.options.alphabetically.each do |option|
           %li{'data-option' => option.id} #{ option.text }
     
     %em.deadline #{ pluralize(@poll.votes.size, 'vote') } cast &bull; poll closes at <strong>#{ @poll.ends_at.strftime("%e %b '%y %k:%M") }</strong>

@@ -5,6 +5,7 @@ class Option < ActiveRecord::Base
   
   # scopes
   
+  scope :alphabetically, -> { order('options.text ASC') }
   scope :by_votes, -> { order('options.votes_count DESC') }
   
   # validations
