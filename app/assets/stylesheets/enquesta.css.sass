@@ -1,0 +1,56 @@
+@import 'staples'
+@import 'layouts'
+
+// colours
+$beige: #F3F2EE
+$white: lighten($beige,5%)
+$green: #7CAD4B
+$blue: #4A88AD
+$subtle-ink: #626667
+$ink: #1E2326
+
+// fonts
+
+$sans: "jaf-facitweb",sans-serif
+
++reset
+
+body
+  font-size: em(1)
+  line-height: em(1 * 1.4)
+  font-family: $sans
+  background: $beige
+  
+  a, a:link, a:visited
+    text-decoration: none
+    font-weight: 600
+    color: $subtle-ink
+    &:hover
+      color: $ink
+      text-decoration: underline
+  
+  & > div
+    width: 98%
+    max-width: em(26)
+    margin: em(4) auto
+    
+    & > div
+      background: #fff
+      +border-radius(2px)
+      +box-shadow(0 3px 0px darken($beige,5%))
+      padding: em(1)
+      margin: em(1) 0
+      
+      [role='polls-new']
+        +layout-polls-new
+
+      [role='polls-show']
+        +layout-polls-show
+    
+    & > footer
+      opacity: .5
+      p
+        text-align: center
+        font-size: em(.7)
+        line-height: em(.7 * 1.4)
+        color: $subtle-ink

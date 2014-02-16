@@ -1,0 +1,157 @@
+=layout-polls-new
+  form
+    ol.fields
+      li
+        padding: 0 0 em(.5)
+        label
+          display: block
+          font-family: $sans
+          padding: 0 em(.25) em(.5)
+          color: $subtle-ink
+          font-weight: 600
+          font-size: em(.7)
+          line-height: em(.7 * 1.4)
+          letter-spacing: 2px
+          text-transform: uppercase
+  
+        textarea
+          height: em(6)
+          resize: none
+        
+        ul[role='collection']
+          font-size: em(.9)
+          line-height: em(.9 * 1.4)
+          font-weight: 300
+          color: lighten($subtle-ink, 5%)
+        
+        [type='text'], [type='password'], [type='email'], textarea
+          border: none
+          display: block
+          padding: em(.25)
+          color: $subtle-ink
+          background: #fff
+          +border-radius(2px)
+          font-weight: 300
+          font-family: $sans
+          font-size: em(.9)
+          line-height: em(.9 * 1.4)
+          +border-radius(2px)
+          width: 100%
+          +border-radius(2px)
+          &:focus
+            +box-shadow(inset 0 2px 0px darken(#fff, 1.5%))
+            background: darken(#fff, 0.75%)
+    
+    ul.actions
+      padding: em(.5) 0 0
+      li
+        [type='submit']
+          background: $blue
+          +box-shadow(0 3px 0px darken($blue,7.5%))
+          color: $white
+          display: block
+          width: 100%
+          border: none
+          +border-radius(2px)
+          font-family: $sans
+          padding: em(.75) 0 em(.6)
+          font-weight: 600
+          font-size: em(.7)
+          line-height: em(.7 * 1.4)
+          letter-spacing: 2px
+          text-transform: uppercase
+          &:hover
+            cursor: pointer
+            background: lighten($blue,2.5%)
+          &:active
+            background: darken($blue,2.5%)
+
+=layout-polls-show
+  font-size: em(.9)
+  line-height: em(.9 * 1.4)
+  article
+    border-bottom: 1px solid $beige
+    padding: 0 0 em(.5)
+    p
+      font-style: normal
+      font-weight: 600
+  
+  ul
+    padding: em(.5) 0 em(.25)
+    li
+      margin-bottom: em(.25)
+      padding: em(.25) em(.5)
+  
+  // results
+  
+  p.no-votes
+    text-align: center
+    padding: em(3) 0
+    color: $subtle-ink
+  
+  ul.results
+    li
+      padding: em(.25) 0
+      font-size: em(.8)
+      line-height: em(.8 * 1.4)
+      
+      &.winner
+        div.graph
+          & > div
+            background: $green
+      
+      div.graph
+        position: relative
+        margin-top: em(.25)
+        height: em(2)
+        background: $beige
+        +border-radius(2px)
+        
+        label
+          padding: em(.5) 0 0 em(.5)
+          font-size: em(.7)
+          line-height: em(.7 * 1.4)
+        
+        & > label
+          position: absolute
+          color: $subtle-ink
+        
+        & > div
+          position: absolute
+          left: 0
+          overflow: hidden
+          height: em(2)
+          background: $blue
+          +border-radius(2px)
+        
+          & > label
+            width: em(50)
+            display: block
+            color: $white
+  
+  // selector
+  form
+    ul
+      li
+        +border-radius(2px)
+        background: $beige
+        &:hover
+          background: darken($beige,2.5%)
+          cursor: pointer
+  
+  em.deadline
+    margin-top: em(.5)
+    display: block
+    text-align: center
+    color: $subtle-ink
+    font-style: normal
+    letter-spacing: 2px
+    text-transform: uppercase
+    font-size: em(.5)
+    line-height: em(.5 * 1.4)
+    
+    strong
+      font-weight: 600
+  
+  form.new_option
+    display: block

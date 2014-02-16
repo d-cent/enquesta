@@ -5,7 +5,6 @@ class Option < ActiveRecord::Base
   
   # validations
   validates :text, presence: true
-  validates :poll_id, presence: true
   validate :cannot_be_created_after_poll_has_ended
 
 private

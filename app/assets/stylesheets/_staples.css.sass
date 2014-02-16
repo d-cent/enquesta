@@ -1,0 +1,115 @@
+=reset
+  html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, font, img, ins, kbd, q, s, samp, small, strike, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td
+    margin: 0
+    padding: 0
+    font-size: 100%
+    vertical-align: baseline
+    border: 0
+    outline: 0
+    background: transparent
+    -webkit-font-smoothing: optimizeLegibility
+
+  blockquote, q
+    quotes: none
+
+  \:focus
+    outline: 0
+
+  table
+    border-collapse: collapse
+    border-spacing: 0
+
+  ul, ol
+    list-style: none
+
+  *
+    -moz-box-sizing: border-box
+    -webkit-box-sizing: border-box
+    -ms-box-sizing: border-box
+    box-sizing: border-box
+
+=border-radius($args)
+  -webkit-border-radius: $args
+  -moz-border-radius: $args
+  border-radius: $args
+
+=box-shadow($args)
+  -webkit-box-shadow: $args
+  -moz-box-shadow: $args
+  box-shadow: $args
+
+=transition($element, $duration, $transition)
+  -webkit-transition: $element $duration $transition
+  -moz-transition: $element $duration $transition
+  transition: $element $duration $transition
+
+=rotate($degrees)
+  transform: rotate($degrees)
+  -ms-transform: rotate($degrees)
+  -webkit-transform: rotate($degrees)
+
+=disable-select
+  -webkit-touch-callout: none
+  -webkit-user-select: none
+  -khtml-user-select: none
+  -moz-user-select: moz-none
+  -ms-user-select: none
+  user-select: none
+
+=clearfix
+  &:before,
+  &:after
+    content: ""
+    display: table
+  &:after
+    clear: both
+  &
+    zoom: 1
+
+=hidden-text
+  text-indent: -9999px
+  overflow: hidden
+
+=prefix($name, $argument)
+  #{$name}: $argument
+  -webkit-#{$name}: $argument
+  -ms-#{$name}: $argument
+  -moz-#{$name}: $argument
+  -o-#{$name}: $argument
+
+=flip-horizontal
+  display: block
+  -moz-transform: scaleX(-1)
+  -o-transform: scaleX(-1)
+  -webkit-transform: scaleX(-1)
+  transform: scaleX(-1)
+  filter: FlipH
+  -ms-filter: "FlipH"
+
+
+$em: 16px
+
+@function em($x)
+  @return $x * $em
+
+@function ms($x)
+  @if $x == 0
+    @return 10px
+  @else if $x == 1
+    @return 12px
+  @else if $x == 2
+    @return 13px
+  @else if $x == 3
+    @return 14px
+  @else if $x == 4
+    @return 18px
+  @else if $x == 5
+    @return 21px
+  @else if $x == 6
+    @return 24px
+  @else if $x == 7
+    @return 30px
+  @else if $x == 8
+    @return 36px
+  @else if $x == 9
+    @return 42px

@@ -5,6 +5,8 @@ class PollsController < ApplicationController
   
   def new
     @poll = Poll.new(ends_at: Time.zone.now + 1.hours)
+    
+    3.times { @poll.options.build }
   end
   
   def create
@@ -12,6 +14,7 @@ class PollsController < ApplicationController
     if @poll.save
       redirect_to @poll
     else
+      raise @poll.options.map(&:errors).inspect
       render :new
     end
   end
@@ -19,6 +22,6 @@ class PollsController < ApplicationController
 private
 
   def poll_params
-    params.require(:poll).permit(:prompt, :ends_at)
+    params.require(:poll).permit(:prompt, :ends_at, options_attributes: [:id, :text])
   end
 end

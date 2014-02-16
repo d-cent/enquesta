@@ -1,32 +1,39 @@
-%p= @poll.prompt
+%div{role: 'polls-show'}
+  %article
+    :markdown
+      #{ @poll.prompt }
 
-- if @poll.is_over?
+  - if @poll.is_over?
+    
+    - if @poll.votes.any?
+      %ul.results
+        - @poll.options.each do |option|
+          %li{class: ( (@poll.winning_option == option) ? 'winner' : nil )}
+            %label #{ option.text }
+            %div.graph
+              %label #{ pluralize(option.votes.size, 'vote') }
+              %div{style: "width: #{ (option.votes.size * 100) / (@poll.votes.size) }%;"}
+                %label #{ pluralize(option.votes.size, 'vote') }
+    
+    - else
+      
+      %p.no-votes No votes were cast.
 
-  %em closed at #{ @poll.ends_at }
+    %em.deadline #{ pluralize(@poll.votes.size, 'vote') } cast &bull; closed at <strong>#{ @poll.ends_at.strftime("%e %b '%y %k:%M") }</strong>
 
-  %ul
-    - @poll.options.each do |option|
-      %li #{ option.text } (#{ option.votes.size })
+  - else
 
-- else
+    :coffeescript
+      $(document).on 'ready page:load', ->
+        $("[data-action='selector'] li").bind 'click', (e) ->
+          $("[name='vote[option_id]']").val $(e.currentTarget).data('option')
+          $(e.currentTarget).closest('form').submit()
 
-  %em poll closes at #{ @poll.ends_at }
-
-  :coffeescript
-    $(document).on 'ready page:load', ->
-      $("[data-action='selector'] li").bind 'click', (e) ->
-        $("[name='vote[option_id]']").val $(e.currentTarget).data('option')
-        $(e.currentTarget).closest('form').submit()
-
-  = form_for [@poll, Vote.new] do |f|
-    = f.hidden_field :option_id
+    = form_for [@poll, Vote.new] do |f|
+      = f.hidden_field :option_id
   
-    %ul{'data-action' => 'selector'}
-      - @poll.options.each do |option|
-        %li{'data-option' => option.id} #{ option.text } (#{ option.votes.size })
-
-  = form_for [@poll, @poll.options.build] do |f|
-    = f.label :text, 'Option'
-    = f.text_area :text
-  
-    = f.submit
+      %ul{'data-action' => 'selector'}
+        - @poll.options.each do |option|
+          %li{'data-option' => option.id} #{ option.text }
+    
+    %em.deadline #{ pluralize(@poll.votes.size, 'vote') } cast &bull; poll closes at <strong>#{ @poll.ends_at.strftime("%e %b '%y %k:%M") }</strong>

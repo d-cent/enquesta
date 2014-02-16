@@ -1,8 +1,19 @@
-= form_for @poll do |f|
-  = f.label :prompt
-  = f.text_area :prompt
+%div{role: 'polls-new'}
+  = form_for @poll do |f|
+    %ol.fields
+      %li.prompt
+        = f.label :prompt, 'Question'
+        = f.text_area :prompt, placeholder: '(Where should we get dinner?)'
+      
+      %li.options
+        = f.label :options
+        %ol
+          = f.fields_for :options do |of|
+            %li= of.text_field :text
   
-  = f.label :ends_at
-  = f.text_field :ends_at
+      %li.ends_at
+        = f.label :ends_at, 'Deadline'
+        = f.text_field :ends_at
   
-  = f.submit
+    %ul.actions
+      %li= f.submit

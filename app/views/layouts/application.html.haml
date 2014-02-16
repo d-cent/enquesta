@@ -1,0 +1,16 @@
+!!!
+%html
+  %head
+    %title Enquesta
+    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+    %script{src: "//use.typekit.net/giq8ofl.js", type: "text/javascript"}
+    :javascript
+      try{Typekit.load();}catch(e){}
+  %body
+    %div
+      %div= yield
+      %footer
+        :markdown
+          this [open-source software](http://github.com/d-cent/enquesta) is part of the [d-cent project](http://dcentproject.eu).

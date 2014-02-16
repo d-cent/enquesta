@@ -3,6 +3,8 @@ class Poll < ActiveRecord::Base
   has_many :options
   has_many :votes, through: :options
   
+  accepts_nested_attributes_for :options, reject_if: lambda { |a| a[:text].blank? }, allow_destroy: true
+  
   # validations
   validates :prompt, presence: true
   
@@ -19,6 +21,10 @@ class Poll < ActiveRecord::Base
   
   def is_over?
     self.ends_at.present? && (Time.zone.now > self.ends_at)
+  end
+  
+  def winning_option
+    self.options.first
   end
 
 private
