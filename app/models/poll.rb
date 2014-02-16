@@ -24,7 +24,7 @@ class Poll < ActiveRecord::Base
   end
   
   def winning_option
-    self.options.first
+    self.options.by_votes.first
   end
 
 private

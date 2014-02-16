@@ -14,7 +14,6 @@ class PollsController < ApplicationController
     if @poll.save
       redirect_to @poll
     else
-      raise @poll.options.map(&:errors).inspect
       render :new
     end
   end
