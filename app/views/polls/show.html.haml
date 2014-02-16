@@ -33,6 +33,7 @@
   
       %ul{'data-action' => 'selector'}
         - @poll.options.alphabetically.each do |option|
-          %li{'data-option' => option.id} #{ option.text }
+          %li{'data-option' => option.id}
+            %label <strong>#{ option.text }</strong>
     
     %em.deadline #{ pluralize(@poll.votes.size, 'vote') } cast &bull; poll closes at <strong>#{ @poll.ends_at.strftime("%e %b '%y %k:%M") }</strong>

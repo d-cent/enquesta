@@ -102,7 +102,6 @@
       
       div.graph
         position: relative
-        margin-top: em(.25)
         height: em(2)
         background: $beige
         +border-radius(2px)
@@ -120,11 +119,11 @@
         
         & > label
           position: absolute
-          color: lighten($subtle-ink,10%)
+          color: lighten($subtle-ink,15%)
           strong
             color: $subtle-ink
             &:after
-              color: lighten($subtle-ink,10%)
+              color: lighten($subtle-ink,15%)
         
         & > div
           position: absolute
@@ -146,12 +145,37 @@
   // selector
   form
     ul
+      overflow: hidden
+      padding: em(.5) 0 0
+      margin-bottom: em(.5)
       li
+        display: block
+        margin: em(.25) 0 em(.75)
+        padding: 0
+        overflow: hidden
         +border-radius(2px)
-        background: $beige
+        
+        label
+          display: block
+          width: em(50)
+          height: em(2)
+          padding: em(.5) 0 0 em(.5)
+          background: $beige
+          font-size: em(.7)
+          line-height: em(.7 * 1.4)
+          font-weight: 300
+          color: lighten($subtle-ink,10%)
+          strong
+            color: $subtle-ink
+            font-weight: 600
+        
         &:hover
-          background: darken($beige,2.5%)
-          cursor: pointer
+          label
+            cursor: pointer
+            background: $blue
+            color: $white
+            strong
+              color: $white
   
   em.deadline
     margin-top: em(.5)
