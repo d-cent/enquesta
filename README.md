@@ -23,3 +23,15 @@ I'm using [rspec](http://rspec.info/) to test the models and controllers. Contri
 ```bash
 bundle exec rake
 ```
+
+## Deploy
+
+Deploy it on [Heroku](http://heroku.com) in a few easy steps:
+
+```bash
+heroku create
+git push heroku master
+heroku run rake db:schema:load
+rake secret | pbcopy
+heroku config:set SECRET_KEY_BASE=[ cmd+v ]
+```
