@@ -12,5 +12,9 @@
     %div
       %div= yield
       %footer
+        %p
+          #{ request.env['REMOTE_ADDR'] }
+          #{ request.env['HTTP_USER_AGENT'] }
+          #{ request.env['HTTP_ACCEPT'] }
         :markdown
           this [open-source software](http://github.com/d-cent/enquesta) is part of the [d-cent project](http://dcentproject.eu).

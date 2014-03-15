@@ -18,6 +18,21 @@
           height: em(6)
           resize: none
         
+        ol
+          list-style: decimal inside
+          color: lighten($subtle-ink, 5%)
+          font-weight: 300
+          font-size: em(.7)
+          line-height: em(.7 * 1.4)
+          li
+            clear: both
+            overflow: hidden
+            padding: em(.35)
+            [type='text']
+              float: right
+              width: 95%
+              margin-top: em(-.35)
+        
         ul[role='collection']
           font-size: em(.9)
           line-height: em(.9 * 1.4)

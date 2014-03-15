@@ -7,7 +7,7 @@
     
     - if @poll.votes.any?
       %ul.results
-        - @poll.options.each do |option|
+        - @poll.options.alphabetically.each do |option|
           %li{class: ( (@poll.winning_option == option) ? 'winner' : nil )}
             %div.graph
               %label <strong>#{ option.text }</strong> #{ pluralize(option.votes.size, 'vote') }
