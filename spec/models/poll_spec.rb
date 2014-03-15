@@ -21,9 +21,10 @@ describe Poll do
     end
 
     it "should refer to its most voted option as its winner" do
-      5.times { poll.options.where(text: 'Falafel').first.votes.create! }
-      4.times { poll.options.where(text: 'Halloumi').first.votes.create! }
-      3.times { poll.options.where(text: 'Spinach').first.votes.create! }
+      i = 0
+      5.times { poll.options.where(text: 'Falafel').first.votes.create!(user_hash: i.to_s) && (i += 1) }
+      4.times { poll.options.where(text: 'Halloumi').first.votes.create!(user_hash: i.to_s) && (i += 1) }
+      3.times { poll.options.where(text: 'Spinach').first.votes.create!(user_hash: i.to_s) && (i += 1) }
       
       poll.winning_option.text.should == 'Falafel'
     end
