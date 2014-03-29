@@ -1,14 +1,23 @@
 development:
   adapter: postgresql
+  encoding: SQL_ASCII
   database: enquesta_development
+  username: postgres
+  password: 123 
   host: localhost
 
 test:
   adapter: postgresql
+  encoding: SQL_ASCII
   database: enquesta_test
+  username: postgres
+  password: 123
   host: localhost
 
 production:
   adapter: postgresql
+  encoding: SQL_ASCII
   database: enquesta_production
+  username: postgres
+  password: 123
   host: localhost
