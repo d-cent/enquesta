@@ -3,7 +3,7 @@ class VotesController < ApplicationController
     @poll = Poll.find_securely(params[:poll_id])
     option = @poll.options.where(id: vote_params[:option_id]).first
     
-    user_hash_components = [@poll.id.to_s, request.remote_ip, request.env['HTTP_USER_AGENT'], request.env['HTTP_ACCEPT']].sort.join('')
+    user_hash_components = [@poll.id.to_s, request.remote_ip, request.env['HTTP_USER_AGENT'], request.env['HTTP_ACCEPT']].reject { |c| c.nil? }.sort.join('')
     user_hash = Digest::MD5.hexdigest(user_hash_components)
     vote = Vote.new(option: option, user_hash: user_hash)
     
