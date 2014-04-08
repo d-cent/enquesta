@@ -1,5 +1,3 @@
-require 'digest/md5'
-
 class VotesController < ApplicationController
   def create
     @poll = Poll.find_securely(params[:poll_id])
