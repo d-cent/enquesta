@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20140315153201) do
     t.text     "text"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "votes_count"
+    t.integer  "votes_count", default: 0
   end
 
   create_table "polls", force: true do |t|
@@ -33,7 +33,6 @@ ActiveRecord::Schema.define(version: 20140315153201) do
   end
 
   create_table "votes", force: true do |t|
-    t.integer  "poll_id"
     t.integer  "option_id"
     t.datetime "created_at"
     t.datetime "updated_at"
