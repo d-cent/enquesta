@@ -12,8 +12,9 @@
             %li= of.text_field :text
   
       %li.ends_at
-        = f.label :ends_at, 'Deadline'
-        = f.text_field :ends_at
+        = f.label :ends_in_hours, 'Close poll in'
+        = f.text_field :ends_in_hours
+        %label.addendum hours
   
     %ul.actions
       %li= f.submit

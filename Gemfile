@@ -13,6 +13,7 @@ gem 'unicorn'
 gem 'rails_12factor'
 gem 'haml'
 gem 'redcarpet'
+gem 'time_difference', '~> 0.3.2'
 
 group :doc do
   gem 'sdoc', require: false

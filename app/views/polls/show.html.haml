@@ -18,7 +18,7 @@
       
       %p.no-votes No votes were cast.
 
-    %em.deadline #{ pluralize(@poll.votes.size, 'vote') } cast &bull; closed at <strong>#{ @poll.ends_at.strftime("%e %b '%y %k:%M") }</strong>
+    %em.deadline #{ pluralize(@poll.votes.size, 'vote') } cast &bull; closed <strong>#{ pluralize(@poll.ends_in_hours, 'hour') } ago</strong>
 
   - else
 
@@ -40,4 +40,4 @@
                   %abbr{title: 'selected'} √ 
                 #{ option.text }
     
-    %em.deadline #{ pluralize(@poll.votes.size, 'vote') } cast &bull; poll closes at <strong>#{ @poll.ends_at.strftime("%e %b '%y %k:%M") }</strong>
+    %em.deadline #{ pluralize(@poll.votes.size, 'vote') } cast &bull; poll closes in <strong>#{ pluralize(@poll.ends_in_hours, 'hour') }</strong>

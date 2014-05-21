@@ -26,6 +26,14 @@ class Poll < ActiveRecord::Base
   def winning_option
     self.options.by_votes.first
   end
+  
+  def ends_in_hours
+    TimeDifference.between(Time.zone.now, ends_at).in_hours
+  end
+  
+  def ends_in_hours=(x)
+    self.ends_at = Time.zone.now + (x.to_f * 60).to_i.minutes
+  end
 
 private
   
