@@ -3,14 +3,7 @@ class VotesController < ApplicationController
     poll = Poll.find_securely(params[:poll_id])
     option = poll.options.where(id: vote_params[:option_id]).first
     
-    user_hash = Digest::MD5.hexdigest(
-                  [poll.id.to_s, request.remote_ip,
-                  request.env['HTTP_USER_AGENT'],
-                  request.env['HTTP_ACCEPT']]
-                  .reject { |c| c.nil? }.sort.join('')
-                )
-    
-    vote = Vote.new(option: option, user_hash: user_hash)
+    vote = Vote.new(option: option, user_hash: current_user_hash_for_poll(poll))
     
     vote.save
     redirect_to poll
@@ -19,15 +12,8 @@ class VotesController < ApplicationController
   def update
     poll = Poll.find_securely(params[:poll_id])
     option = poll.options.where(id: vote_params[:option_id]).first
-    
-    user_hash = Digest::MD5.hexdigest(
-                  [poll.id.to_s, request.remote_ip,
-                  request.env['HTTP_USER_AGENT'],
-                  request.env['HTTP_ACCEPT']]
-                  .reject { |c| c.nil? }.sort.join('')
-                )
   
-    vote = poll.votes.where(user_hash: user_hash).first
+    vote = poll.votes.where(user_hash: current_user_hash_for_poll(poll)).first
     
     vote.update(option: option)
     
