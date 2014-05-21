@@ -180,17 +180,33 @@
           line-height: em(.7 * 1.4)
           font-weight: 300
           color: lighten($subtle-ink,10%)
+          
           strong
+            float: left
             color: $subtle-ink
             font-weight: 600
+          
+          abbr
+            float: left
+            margin-top: 2px
+            margin-right: em(.4)
+            width: 16px
+            height: 11px
+            background: transparent url('tick.png') center top no-repeat
+            text-indent: em(-9999)
+            overflow: hidden
         
         &:hover
           label
             cursor: pointer
             background: $blue
             color: $white
+            
             strong
               color: $white
+            
+            abbr
+              background-position: center bottom
   
   em.deadline
     margin-top: em(.5)

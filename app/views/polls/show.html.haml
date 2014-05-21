@@ -28,12 +28,16 @@
           $("[name='vote[option_id]']").val $(e.currentTarget).data('option')
           $(e.currentTarget).closest('form').submit()
 
-    = form_for [@poll, Vote.new] do |f|
+    = form_for [@poll, @vote] do |f|
       = f.hidden_field :option_id
   
       %ul{'data-action' => 'selector'}
         - @poll.options.alphabetically.each do |option|
           %li{'data-option' => option.id}
-            %label <strong>#{ option.text }</strong>
+            %label
+              %strong
+                - if @vote.option == option
+                  %abbr{title: 'selected'} √ 
+                #{ option.text }
     
     %em.deadline #{ pluralize(@poll.votes.size, 'vote') } cast &bull; poll closes at <strong>#{ @poll.ends_at.strftime("%e %b '%y %k:%M") }</strong>

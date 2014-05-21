@@ -1,7 +1,7 @@
 class Vote < ActiveRecord::Base
   belongs_to :option, counter_cache: true
   
-  validates :option_id, presence: true
+  validates :option, presence: true
   validates :user_hash, presence: true, uniqueness: true
   validate :cannot_be_created_after_poll_has_ended
 
