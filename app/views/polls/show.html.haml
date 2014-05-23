@@ -3,7 +3,7 @@
     :markdown
       #{ @poll.prompt }
 
-  - if @poll.is_over?
+  - if @poll.is_over? or @results
     
     - if @poll.votes.any?
       %ul.results
@@ -16,9 +16,15 @@
     
     - else
       
-      %p.no-votes No votes were cast.
+      %p.no-votes= @poll.is_over? ? "No votes were cast." : "No votes have been cast."
 
-    %em.deadline #{ pluralize(@poll.votes.size, 'vote') } cast &bull; closed <strong>#{ pluralize(@poll.ends_in_hours, 'hour') } ago</strong>
+    %em.deadline
+      #{ pluralize(@poll.votes.size, 'vote') } cast &bull;
+      
+      - if @poll.is_over?
+        closed <strong>#{ pluralize(@poll.ends_in_hours, 'hour') } ago</strong>
+      - else
+        closes in <strong>#{ pluralize(@poll.ends_in_hours, 'hour') }</strong>
 
   - else
 
