@@ -1,0 +1,13 @@
+ga:
+  copyright: "Is é seo [foinse oscailte bogearraí](http://github.com/d-cent/enquesta) Is cuid de na [tionscadal d-cent](http://dcentproject.eu)."
+  poll_prompt: "Ceist"
+  poll_prompt_placeholder: "Cén áit ar chóir dúinn a fháil dinnéar?" 
+  poll_options: "roghanna" 
+  poll_ends_in: "vótaíocht dlúth i" 
+  poll_hours: "uair an chloig"
+  poll_hour: "uair an chloig"
+  poll_create: "a chruthú vótaíocht"
+  poll_vote: "vóta"
+  poll_cast: "caitheadh"
+  poll_closed: "dúnta"
+  poll_closes_in: "Dúnann i"
