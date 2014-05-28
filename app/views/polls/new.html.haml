@@ -2,19 +2,19 @@
   = form_for @poll do |f|
     %ol.fields
       %li.prompt
-        = f.label :prompt, 'Question'
-        = f.text_area :prompt, placeholder: '(Where should we get dinner?)'
+        = f.label :prompt, t('poll_prompt')
+        = f.text_area :prompt, placeholder: "(#{ t('poll_prompt_placeholder') })"
       
       %li.options
-        = f.label :options
+        = f.label :options, t('poll_options')
         %ol
           = f.fields_for :options do |of|
             %li= of.text_field :text
   
       %li.ends_at
-        = f.label :ends_in_hours, 'Close poll in'
+        = f.label :ends_in_hours, t('poll_ends_in')
         = f.text_field :ends_in_hours
-        %label.addendum hours
+        %label.addendum= t('poll_hours')
   
     %ul.actions
-      %li= f.submit
+      %li= f.submit "#{ t('poll_create') }"
