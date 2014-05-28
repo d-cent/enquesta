@@ -1,0 +1,13 @@
+es:
+  copyright: "este [software open-source](http://github.com/d-cent/enquesta) es parte del [proyecto d-cent](http://dcentproject.eu)."
+  poll_prompt: "Pregunta"
+  poll_prompt_placeholder: "¿Dónde vamos a cenar?"
+  poll_options: "alternativas"
+  poll_ends_in: "la encuesta termina en"
+  poll_hours: "horas"
+  poll_hour: "hora"
+  poll_create: "crear encuesta"
+  poll_vote: "votar"
+  poll_cast: "emitir"
+  poll_closed: "cerrada"
+  poll_closes_in: "cierra en"
