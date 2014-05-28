@@ -33,5 +33,5 @@ heroku create
 git push heroku master
 heroku run rake db:schema:load
 rake secret | pbcopy
-heroku config:set SECRET_KEY_BASE=[ cmd+v ] I18N_LOCALE=[en/es/de]
+heroku config:set SECRET_KEY_BASE=[ cmd+v ] I18N_LOCALE=[en/es/de/ga]
 ```
