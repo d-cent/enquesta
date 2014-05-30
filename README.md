@@ -35,3 +35,11 @@ heroku run rake db:schema:load
 rake secret | pbcopy
 heroku config:set SECRET_KEY_BASE=[ cmd+v ] I18N_LOCALE=[en/es/de/ga]
 ```
+
+## Usage
+
+Open the root page (`/`) to create a poll. The prompt will be rendered with Markdown and will auto-link URLs (though it requires an `http://` or `www.`). Options are currently limited to 3 (though this limitation will be lifted forthwith), and blank options will be ignored.
+
+Polls are not currently authenticated, but secured by a secret URL. However, this is not proper security and shouldn't be assumed to be safe from tampering or prying eyes.
+
+Votes are limited to one-per-person via a hash of the visitor's IP and browser data. Again, this is good for trusted and closed groups, but it would be fairly trivial for a malicious actor to spoof.
