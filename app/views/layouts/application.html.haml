@@ -14,3 +14,7 @@
       %footer
         :markdown
           #{ t('copyright') }
+    
+    - if ENV['FOLKTALE_ID'] && ENV['FOLKTALE_ID'].present?
+      <script src="//d1fwvc9hrlqt7x.cloudfront.net/track.js"></script>
+      <script>try{folktale('#{ ENV["FOLKTALE_ID"] }');}catch(e){}</script>
