@@ -8,6 +8,7 @@ _for just-in-time distributed decision making._
 ## Get Started
 
 ```bash
+git clone https://github.com/d-cent/enquesta.git
 bundle
 bundle exec rake db:create
 bundle exec rake db:schema:load
@@ -34,6 +35,13 @@ git push heroku master
 heroku run rake db:schema:load
 rake secret | pbcopy
 heroku config:set SECRET_KEY_BASE=[ cmd+v ] I18N_LOCALE=[en/es/de/ga]
+```
+
+Deploy your latest changes to Heroku:
+
+```bash
+git pull --rebase origin master
+git push heroku master
 ```
 
 ## Usage
