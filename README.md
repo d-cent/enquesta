@@ -34,10 +34,10 @@ heroku create
 git push heroku master
 heroku run rake db:schema:load
 rake secret | pbcopy
-heroku config:set SECRET_KEY_BASE=[ cmd+v ] I18N_LOCALE=[en/es/de/ga]
+heroku config:set SECRET_KEY_BASE=[ cmd+v ] I18N_LOCALE=[en/es/de/ga/fi]
 ```
 
-Deploy your latest changes to Heroku:
+Made some changes and pushed them to Github? Deploy them to Heroku:
 
 ```bash
 git pull --rebase origin master
