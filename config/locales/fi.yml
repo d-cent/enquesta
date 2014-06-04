@@ -6,7 +6,7 @@ fi:
   poll_ends_in: "äänestysaika päättyy"
   poll_hours: "tunnin päästä"
   poll_hour: "tunnissa"
-  poll_create: "luo äänestys"
+  poll_create: "käynnistä äänestys"
   poll_vote: "ääniä"
   poll_cast: "annettu"
   poll_closed: "suljettu"
