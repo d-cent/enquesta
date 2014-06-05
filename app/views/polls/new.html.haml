@@ -2,7 +2,13 @@
   append_option = (ol) ->
     i = ol.children().length
     ol.append( '<li><input id="poll_options_attributes_' + i + '_text" name="poll[options_attributes][' + i + '][text]" type="text"></li>' )
-    
+  
+  reindex_options = (ol) ->
+    for li in ol.children()
+      i = ol.children().index(li)
+      $('input:first', li).attr('id', 'poll_options_attributes_' + i + '_text')
+      $('input:first', li).attr('name', 'poll[options_attributes][' + i + '][text]')
+  
   clean_up = (ol) ->
     options = []
     for li in ol.children()
@@ -15,6 +21,7 @@
   $(document).ready ->
     $('.options ol').on 'blur', 'li input', (e) ->
       clean_up $(e.currentTarget).parents('ol:first')
+      reindex_options $(e.currentTarget).parents('ol:first')
       
     $('.options ol').on 'keyup', 'li:last input', (e) ->
       if $(e.currentTarget).val().length > 0
