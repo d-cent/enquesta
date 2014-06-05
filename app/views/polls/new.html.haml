@@ -1,3 +1,10 @@
+:coffeescript
+  $(document).ready ->
+    $('.options ol').on 'keyup', 'li:last input', (e) ->
+      if $(e.currentTarget).val().length > 0
+        i = $(e.currentTarget).parents('ol:first').children().length;
+        $(e.currentTarget).parents('ol:first').append( '<li><input id="poll_options_attributes_' + i + '_text" name="poll[options_attributes][' + i + '][text]" type="text"></li>' )
+
 %div{role: 'polls-new'}
   = form_for @poll do |f|
     %ol.fields
