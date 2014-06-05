@@ -16,7 +16,7 @@
     
     - else
       
-      %p.no-votes= @poll.is_over? ? "No votes were cast." : "No votes have been cast."
+      %p.no-votes= @poll.is_over? ? t('no_votes_were_cast') : t('no_votes_have_been_cast')
 
     %em.deadline
       #{ pluralize(@poll.votes.size, t('poll_vote')) } #{ t('poll_cast') } &bull;
