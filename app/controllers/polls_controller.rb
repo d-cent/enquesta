@@ -14,7 +14,7 @@ class PollsController < ApplicationController
   def new
     @poll = Poll.new(ends_at: Time.zone.now + 1.hours)
     
-    3.times { @poll.options.build }
+    2.times { @poll.options.build }
   end
   
   def create
@@ -22,7 +22,7 @@ class PollsController < ApplicationController
     if @poll.save
       redirect_to @poll
     else
-      (2.times { @poll.options.build }) if @poll.options.empty?
+      @poll.options.build if @poll.options.empty?
       @poll.options.build
       render :new
     end
