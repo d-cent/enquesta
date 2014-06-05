@@ -11,3 +11,5 @@ en:
   poll_cast: "cast"
   poll_closed: "closed"
   poll_closes_in: "closes in"
+  no_votes_were_cast: 'No votes were cast.'
+  no_votes_have_been_cast: 'No votes have been cast.'
