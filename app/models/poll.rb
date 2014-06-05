@@ -1,6 +1,6 @@
 class Poll < ActiveRecord::Base
   # relationships
-  has_many :options
+  has_many :options, inverse_of: :poll
   has_many :votes, through: :options
   
   accepts_nested_attributes_for :options, reject_if: lambda { |a| a[:text].blank? }, allow_destroy: true

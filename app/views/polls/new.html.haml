@@ -1,12 +1,24 @@
 :coffeescript
+  append_option = (ol) ->
+    i = ol.children().length
+    ol.append( '<li><input id="poll_options_attributes_' + i + '_text" name="poll[options_attributes][' + i + '][text]" type="text"></li>' )
+    
+  clean_up = (ol) ->
+    options = []
+    for li in ol.children()
+      option = $('input', li).val()
+      if ((option.length < 1) and !$(li).is(':last-child')) or ((option.length > 0) and (option in options))
+        li.remove()
+      else if (option.length > 0)
+        options.push option
+  
   $(document).ready ->
+    $('.options ol').on 'blur', 'li input', (e) ->
+      clean_up $(e.currentTarget).parents('ol:first')
+      
     $('.options ol').on 'keyup', 'li:last input', (e) ->
       if $(e.currentTarget).val().length > 0
-        for li in $('.options ol li')
-          if ($('input', li).val().length < 1)
-            li.remove()
-        i = $(e.currentTarget).parents('ol:first').children().length;
-        $(e.currentTarget).parents('ol:first').append( '<li><input id="poll_options_attributes_' + i + '_text" name="poll[options_attributes][' + i + '][text]" type="text"></li>' )
+        append_option $(e.currentTarget).parents('ol:first')
 
 %div{role: 'polls-new'}
   = form_for @poll do |f|

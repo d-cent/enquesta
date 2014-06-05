@@ -22,6 +22,8 @@ class PollsController < ApplicationController
     if @poll.save
       redirect_to @poll
     else
+      (2.times { @poll.options.build }) if @poll.options.empty?
+      @poll.options.build
       render :new
     end
   end

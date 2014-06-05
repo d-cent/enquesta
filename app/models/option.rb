@@ -1,7 +1,7 @@
 class Option < ActiveRecord::Base
   # relationships
-  belongs_to :poll
-  has_many :votes
+  belongs_to :poll, inverse_of: :options
+  has_many :votes, inverse_of: :option
   
   # scopes
   
