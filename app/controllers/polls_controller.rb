@@ -31,6 +31,6 @@ class PollsController < ApplicationController
 private
 
   def poll_params
-    params.require(:poll).permit(:prompt, :ends_at, :ends_in_hours, options_attributes: [:id, :text])
+    params.require(:poll).permit(:prompt, :ends_at, :ends_in_hours, options_attributes: [:id, :text, :position])
   end
 end

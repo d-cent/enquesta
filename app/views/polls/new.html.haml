@@ -1,13 +1,16 @@
 :coffeescript
   append_option = (ol) ->
     i = ol.children().length
-    ol.append( '<li><input id="poll_options_attributes_' + i + '_text" name="poll[options_attributes][' + i + '][text]" type="text"></li>' )
+    ol.append( '<li><input id="poll_options_attributes_' + i + '_text" name="poll[options_attributes][' + i + '][text]" type="text"><input id="poll_options_attributes_' + i + '_position" name="poll[options_attributes][' + i + '][position]" type="hidden" value="' + i + '"></li>' )
   
   reindex_options = (ol) ->
     for li in ol.children()
       i = ol.children().index(li)
-      $('input:first', li).attr('id', 'poll_options_attributes_' + i + '_text')
-      $('input:first', li).attr('name', 'poll[options_attributes][' + i + '][text]')
+      $('input[type="text"]:first', li).attr('id', 'poll_options_attributes_' + i + '_text')
+      $('input[type="text"]:first', li).attr('name', 'poll[options_attributes][' + i + '][text]')
+      $('input[type="hidden"]:first', li).attr('id', 'poll_options_attributes_' + i + '_position')
+      $('input[type="hidden"]:first', li).attr('name', 'poll[options_attributes][' + i + '][position]')
+      $('input[type="hidden"]:first', li).val(i)
   
   clean_up = (ol) ->
     options = []
@@ -18,7 +21,7 @@
       else if (option.length > 0)
         options.push option
   
-  $(document).ready ->
+  $(document).on 'ready page:load', ->
     $('.options ol').on 'blur', 'li input', (e) ->
       clean_up $(e.currentTarget).parents('ol:first')
       reindex_options $(e.currentTarget).parents('ol:first')
@@ -38,7 +41,9 @@
         = f.label :options, t('poll_options')
         %ol
           = f.fields_for :options do |of|
-            %li= of.text_field :text
+            %li
+              = of.text_field :text
+              = of.hidden_field :position, value: of.options[:child_index]
   
       %li.ends_at
         = f.label :ends_in_hours, t('poll_ends_in')

@@ -7,7 +7,7 @@
     
     - if @poll.votes.any?
       %ul.results
-        - @poll.options.alphabetically.each do |option|
+        - @poll.options.by_position.each do |option|
           %li{class: ( (@poll.winning_option == option) ? 'winner' : nil )}
             %div.graph
               %label <strong>#{ option.text }</strong> #{ pluralize(option.votes.size, t('poll_vote')) }
@@ -38,7 +38,7 @@
       = f.hidden_field :option_id
   
       %ul{'data-action' => 'selector'}
-        - @poll.options.alphabetically.each do |option|
+        - @poll.options.by_position.each do |option|
           %li{'data-option' => option.id}
             %label
               %strong
