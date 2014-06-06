@@ -8,6 +8,13 @@ fi:
   poll_hour: "tunnissa"
   poll_create: "käynnistä äänestys"
   poll_vote: "ääniä"
+  poll_votes: "ääniä"
   poll_cast: "annettu"
   poll_closed: "suljettu"
   poll_closes_in: "sulkeutuu"
+  votes:
+    one: "%{count} ääniä"
+    other: "%{count} ääniä"
+  hours:
+    one: "%{count} tunnissa"
+    other: "%{count} tunnissa"

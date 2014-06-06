@@ -10,21 +10,21 @@
         - @poll.options.by_position.each do |option|
           %li{class: ( (@poll.winning_option == option) ? 'winner' : nil )}
             %div.graph
-              %label <strong>#{ option.text }</strong> #{ pluralize(option.votes.size, t('poll_vote')) }
+              %label <strong>#{ option.text }</strong> #{ t(:votes, count: option.votes.size) }
               %div{style: "width: #{ (option.votes.size * 100) / (@poll.votes.size) }%;"}
-                %label <strong>#{ option.text }</strong> #{ pluralize(option.votes.size, t('poll_vote')) }
+                %label <strong>#{ option.text }</strong> #{ t(:votes, count: option.votes.size) }
     
     - else
       
       %p.no-votes= @poll.is_over? ? t('no_votes_were_cast') : t('no_votes_have_been_cast')
 
     %em.deadline
-      #{ pluralize(@poll.votes.size, t('poll_vote')) } #{ t('poll_cast') } &bull;
+      #{ t(:votes, count: @poll.votes.size) } #{ t('poll_cast') } &bull;
       
       - if @poll.is_over?
-        #{ t('poll_closed') } <strong>#{ pluralize(@poll.ends_in_hours, t('poll_hour')) } ago</strong>
+        #{ t('poll_closed') } <strong>#{ t(:hours, count: @poll.ends_in_hours) } ago</strong>
       - else
-        #{ t('poll_closes_in') } <strong>#{ pluralize(@poll.ends_in_hours, t('poll_hour')) }</strong>
+        #{ t('poll_closes_in') } <strong>#{ t(:hours, count: @poll.ends_in_hours) }</strong>
 
   - else
 
@@ -46,4 +46,4 @@
                   %abbr{title: 'selected'} √ 
                 #{ option.text }
     
-    %em.deadline #{ pluralize(@poll.votes.size, t('poll_vote')) } #{ t('poll_cast') } &bull; #{ t('poll_closes_in') } <strong>#{ pluralize(@poll.ends_in_hours, t('poll_hour')) }</strong>
+    %em.deadline #{ t(:votes, count: @poll.votes.size) } #{ t('poll_cast') } &bull; #{ t('poll_closes_in') } <strong>#{ t(:hours, count: @poll.ends_in_hours) }</strong>

@@ -4,12 +4,19 @@ en:
   poll_prompt_placeholder: "Where should we get dinner?"
   poll_options: "options"
   poll_ends_in: "close poll in"
-  poll_hours: "hours"
-  poll_hour: "hour"
   poll_create: "create poll"
+  poll_hour: "hour"
+  poll_hours: "hours"
   poll_vote: "vote"
+  poll_votes: "votes"
   poll_cast: "cast"
   poll_closed: "closed"
   poll_closes_in: "closes in"
   no_votes_were_cast: 'No votes were cast.'
   no_votes_have_been_cast: 'No votes have been cast.'
+  votes:
+    one: "%{count} vote"
+    other: "%{count} votes"
+  hours:
+    one: "%{count} hour"
+    other: "%{count} hours"
