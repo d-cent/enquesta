@@ -1,5 +1,5 @@
 class Vote < ActiveRecord::Base
-  belongs_to :option, inverse_of: :votes, counter_cache: true
+  belongs_to :option, inverse_of: :votes
   
   validates :option, presence: true
   validates :user_hash, presence: true, uniqueness: true

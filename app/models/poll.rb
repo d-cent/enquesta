@@ -24,7 +24,7 @@ class Poll < ActiveRecord::Base
   end
   
   def winning_option
-    self.options.by_votes.first
+    self.options.to_a.sort_by { |o| o.votes.size }.first
   end
   
   def ends_in_hours

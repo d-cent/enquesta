@@ -7,7 +7,6 @@ class Option < ActiveRecord::Base
   
   scope :by_position, -> { order('options.position ASC') }
   scope :alphabetically, -> { order('options.text ASC') }
-  scope :by_votes, -> { order('options.votes_count DESC') }
   
   # validations
   validates :text, presence: true
