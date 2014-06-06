@@ -12,7 +12,7 @@ class Option < ActiveRecord::Base
   # validations
   validates :text, presence: true
   validate :cannot_be_created_after_poll_has_ended
-  validates :position, uniqueness: { scope: :poll_id }
+  validates :position, uniqueness: { scope: :poll_id }, allow_blank: true
 
 private
  

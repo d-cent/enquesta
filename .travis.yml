@@ -7,3 +7,5 @@ script:
   - RAILS_ENV=test bundle exec rake db:migrate
   - bundle exec rake db:test:prepare
   - bundle exec rake
+env:
+  - CODECLIMATE_REPO_TOKEN=79299feb0eafe557c8cd5bacba3adeaed941a23441b7c60ab289d520e0e299c7
