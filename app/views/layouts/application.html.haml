@@ -5,9 +5,10 @@
     = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
-    %script{src: "//use.typekit.net/#{ ENV['TYPEKIT_ID'] }.js", type: "text/javascript"}
-    :javascript
-      try{Typekit.load();}catch(e){}
+    - if ENV['TYPEKIT_ID'] && ENV['TYPEKIT_ID'].present?
+      %script{src: "//use.typekit.net/#{ ENV['TYPEKIT_ID'] }.js", type: "text/javascript"}
+      :javascript
+        try{Typekit.load();}catch(e){}
   %body
     %div
       %div= yield
