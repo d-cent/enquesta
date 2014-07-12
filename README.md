@@ -7,6 +7,8 @@ _for just-in-time distributed decision making._
 
 ## Get Started
 
+This assumes you have Ruby, Postgres, and Bundler on your local system.
+
 ```bash
 git clone https://github.com/d-cent/enquesta.git
 bundle
